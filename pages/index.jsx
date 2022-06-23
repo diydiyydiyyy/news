@@ -45,7 +45,7 @@ export default function Home(props) {
 	);
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 	const res = await axios.get(`https://inshorts.deta.dev/news?category=all`);
 
 	const categories = await res.data.data;

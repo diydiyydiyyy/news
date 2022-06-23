@@ -36,9 +36,11 @@ function Detail(props) {
 						</svg>
 					</li>
 					<li>
-						<a href="#" aria-current="page" className="text-secondary">
-							Detail
-						</a>
+						<Link href="#">
+							<a aria-current="page" className="text-secondary">
+								Detail
+							</a>
+						</Link>
 					</li>
 				</ol>
 			</nav>
