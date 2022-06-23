@@ -7,6 +7,8 @@ function Card(props) {
 		<div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm m-5">
 			<Image
 				className="rounded-t-lg w-full h-[200px]"
+				width={390}
+				height={200}
 				src={props.imageUrl}
 				alt="card image"
 			/>
