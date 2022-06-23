@@ -1,10 +1,14 @@
-import Card from '../components/card';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { capitalizeFirstLetter } from '../../utils/capital';
 import axios from 'axios';
+import Card from '../../components/card';
 
-export default function Home(props) {
-	const category = props.categories;
+function Category(props) {
+	const categories = props.categories;
+	const router = useRouter();
+	const category = router.query.category;
 
 	return (
 		<div className="px-10">
@@ -24,16 +28,17 @@ export default function Home(props) {
 					</li>
 					<li className="flex items-center text-secondary">
 						<Link href="/">
-							<a>All</a>
+							<a>{capitalizeFirstLetter(category)}</a>
 						</Link>
 					</li>
 				</ol>
 			</nav>
 
 			<div className="flex justify-around items-center flex-wrap">
-				{category.map((el, i) => (
+				{categories.map((el, i) => (
 					<Card
 						key={i}
+						category={category}
 						id={el.id}
 						title={el.title}
 						imageUrl={el.imageUrl}
@@ -45,8 +50,13 @@ export default function Home(props) {
 	);
 }
 
-export async function getServerSideProps() {
-	const res = await axios.get(`https://inshorts.deta.dev/news?category=all`);
+export default Category;
+
+export async function getServerSideProps(router) {
+	const category = router.query.category;
+	const res = await axios.get(
+		`https://inshorts.deta.dev/news?category=${category}`
+	);
 
 	const categories = await res.data.data;
 	return {
