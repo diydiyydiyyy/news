@@ -1,10 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Card(props) {
 	return (
 		<div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm m-5">
-			<img
+			<Image
 				className="rounded-t-lg w-full h-[200px]"
 				src={props.imageUrl}
 				alt="card image"
