@@ -52,7 +52,7 @@ function Category(props) {
 
 export default Category;
 
-export async function getServerSideProps(router) {
+export async function getStaticProps(router) {
 	const category = router.query.category;
 	const res = await axios.get(
 		`https://inshorts.deta.dev/news?category=${category}`

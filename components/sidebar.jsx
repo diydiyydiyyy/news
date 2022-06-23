@@ -32,11 +32,13 @@ function Sidebar() {
 				<div className="mt-10">
 					{callouts.map((callout, i) => (
 						<Link href={`/category/${callout.category}`} key={i}>
-							<h3
-								className="mt-3 text-xl font-semibold text-secondary cursor-pointer hover:opacity-80"
-								onClick={() => setShowSidebar(!showSidebar)}>
-								{callout.name}
-							</h3>
+							<a>
+								<h3
+									className="mt-3 text-xl font-semibold text-secondary cursor-pointer hover:opacity-80"
+									onClick={() => setShowSidebar(!showSidebar)}>
+									{callout.name}
+								</h3>
+							</a>
 						</Link>
 					))}
 				</div>
